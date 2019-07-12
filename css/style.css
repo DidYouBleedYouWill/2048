@@ -9,7 +9,7 @@ body
     color: #776e65;
     background: url(../img/bg.png);
 
-    \ padding: 0;
+     padding: 0;
 }
 
 header
@@ -68,6 +68,8 @@ header
 
     color: #f9f6f2;
     background-color: #bbada0;
+    position: relative;
+    top: -4px;
 }
 
 .button .up
