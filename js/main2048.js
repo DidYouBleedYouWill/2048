@@ -22,6 +22,7 @@ function prepareForMobile() {
         cellSideLength = 100;
         $('#title2048').addClass('title2048');
         $('.mobileButton').remove();
+        $('body').css('minWidth' , '500px');
     } else {
         $('#pp').remove();
         $('.button').remove();
@@ -193,15 +194,15 @@ document.addEventListener('touchstart', function(event) {
 
 document.addEventListener('touchmove', function(event) {
     event.preventDefault();
-});
+},{passive:false});
 document.addEventListener('touchend', function(event) {
     endx = event.changedTouches[0].pageX;
     endy = event.changedTouches[0].pageY;
 
     var deltax = endx - startx;
     var deltay = endy - starty;
-
-    if (Math.abs(deltax) < 0.15 * documentWidth && Math.abs(deltay) < 0.15 * documentWidth)
+//触发移动
+    if (Math.abs(deltax) < 0.10 * documentWidth && Math.abs(deltay) < 0.15 * documentWidth)
         return;
 
     if (Math.abs(deltax) >= Math.abs(deltay)) {
@@ -235,11 +236,11 @@ document.addEventListener('touchend', function(event) {
 
 function isgameover() {
     if (is2048()) {
-        setTimeout('gamewin();',1000);
-        
+        setTimeout('gamewin();', 1000);
+
     }
     if (nospace(board) && nomove(board))
-        setTimeout('gamelose();',1000);
+        setTimeout('gamelose();', 1000);
 }
 
 function is2048() {
